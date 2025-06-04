@@ -842,8 +842,3 @@ for e in elementos:
             print(f"Pelicula: {titulo}, Director: {director}, Año: {año}, Género: {genero}, Protagonistas: {', '.join(protagonistas)}")
         case 'libro':
             print("Elemento es un libro")
-
-#Ahora entramos en el proyecto de la semana 4.
-
-
-    
