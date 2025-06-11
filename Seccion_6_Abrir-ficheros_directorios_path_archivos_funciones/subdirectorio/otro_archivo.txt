@@ -1,0 +1,9 @@
+soy el nuevo texto en un fichero que esta en otro directorio
+hola
+mundoHola mundo
+              aqui estoy poniendo
+              varias lineas
+              seguidas.
+              adios.     
+                       
+              

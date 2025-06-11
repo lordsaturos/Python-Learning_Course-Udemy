@@ -1,0 +1,10 @@
+soy el nuevo texto
+hola
+mundoHola mundo
+              aqui estoy poniendo
+              varias lineas
+              seguidas.
+              adios.     
+                       
+              holamundoyadiosenlista
+hola mundo y adios en lista bucleada 

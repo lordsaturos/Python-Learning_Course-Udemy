@@ -1,0 +1,9 @@
+Loren ipsum
+Ipsum 
+a línea:
+
+está mal porque abriste el archivo en modo escritura ('w') con:
+
+Cuando abres un archivo en modo 'w' (solo escritura), no puedes leer su contenido. Si intentas usar .read() en un archivo abierto en modo 'w', obtendrás un error como:
+
+Solución:
