@@ -151,7 +151,7 @@ registro_ultima_sesion = ["Federico", "20/12/2021", "08:17:32 hs", "Sin errores 
 
 archivo = open('registro.txt','a')
 
-for p in registro_ultima_sesion:
+for p in registro_ultima_sesion: 
     archivo.writelines(p + "\t")
 
 
@@ -229,5 +229,162 @@ mi_archivo_con_path = open(archivo_con_path)
 print(mi_archivo_con_path.read())
 
 #Video 80. Modulo Pathlib
+from pathlib import Path
 
+carpeta = Path("E:/1_Estudio_Programacion/Udemy_Python_Total/Seccion_6_Abrir-ficheros_directorios_path_archivos_funciones/subdirectorio/mi_archivo_con_path.txt")
+print(carpeta.read_text())
+
+print(carpeta.name) #Devuelve el nombre del fichero
+
+print(carpeta.suffix) #devuelve la terminación extensión de fichero
+
+print(carpeta.stem) #Devuelve el nombre sin la terminación
+
+if not (carpeta.exists()):
+    print("El fichero no existe. ")
+else:
+    print("El fichero existe")
+    
+from pathlib import PureWindowsPath #Rutas puras de window
+
+ruta_window_pura = PureWindowsPath(carpeta)
+
+print(ruta_window_pura)
+
+
+#Video 81. Path
+#Util para crear o mover archivos
+#enumerar archivos
+#crear rutas basadas en strings
+
+from pathlib import Path
+mi_ruta = Path('Europa','España','Barcelona','Sagrada_Familia,.txt')
+print(mi_ruta)
+
+base = Path.home()
+guia = Path(base, "Europa", "España", Path("Barcelona", "Sagrada_Familia.txt"))
+guia2 = guia.with_name("La_Pedrera.txt")
+print(base)
+print(guia)
+print(guia2)
+
+print(guia.parent)
+print(guia.parent.parent)
+
+#Cambio la ruta a la de otra unidad
+#Cambiar la ruta de home a otra unidad (por ejemplo, E:)
+# Puedes crear un Path apuntando directamente a la ruta deseada
+nueva_base = Path("E:/1_Estudio_Programacion/Udemy_Python_Total/Seccion_6_Abrir-ficheros_directorios_path_archivos_funciones")
+print(nueva_base)
+
+guia_secreta = Path(nueva_base, "Europa")
+#Path es iterable
+
+for txt in Path(guia_secreta).glob("*.txt"):
+    print(txt)
+
+for txt in Path(guia_secreta).glob("**/*.txt"):
+    print(txt)
+    
+guia = Path("Europa", "España", "Barcelona", "Sagrada_Familia.txt")
+en_europa = guia.relative_to(Path("Europa"))
+en_espania = guia.relative_to(Path("Europa", "España"))
+print(en_europa)
+print(en_espania)
+    
+#Ejercicio de codificación 115 Practica Path 1
+'''
+Práctica Path 1
+Almacena en la variable ruta_base, un objeto Path que señale el directorio base del usuario.
+
+Recuerda importar Path del módulo pathlib, y utilizar el método home()
+'''
+from pathlib import Path
+ruta_base = Path.home()
+
+#Ejercicio de codificación 116 Practica Path 2
+'''
+ Práctica Path 2
+Implementa y crea una ruta relativa que nos permita llegar al archivo "practicas_path.py" a partir de la siguiente estructura de carpetas:
+
+
+Almacena el directorio obtenido en la variable ruta. No olvides importar Path.
+'''
+from pathlib import Path
+
+ruta = Path("Curso Python", "Día 6", "practicas_path.py")
+
+
+ #Ejercicio de codificación 117 Practica Path 3
+'''
+ Práctica Path 3
+Implementa y crea una ruta absoluta que nos permita llegar al archivo
+"practicas_path.py" a partir de la siguiente estructura de carpetas:
+
+
+Almacena el directorio obtenido en la variable ruta. No olvides importar
+Path, y de concatenar el objeto Path que refiere a la carpeta base del
+usuario.
+ '''
+from pathlib import Path
+ruta = Path(Path.home(), "Curso Python", "Día 6", "practicas_path.py") 
+
+#Video 82. Limpiar la Consola
+
+#LImpiamos al consola. 
+# Importamos funcion
+
+from os import system
+system('cls') #Este argumento depende del sistema operativo 
+#cls para window y 
+# clear para otro
+
+nombre = input("Dime tu nombre: ")
+edad = input("Dime tu edad: ")
+system('cls')
+print(f"Tu nombre es: {nombre}, y tu edad es: {edad} años")
+
+
+#Video 83. Archivos y funciones 
+# Podemos meter a una funcion ficheros y rutas
+
+#Ejercicio de codificación 118 Practica Archivos y Funciones 1
+
+'''
+Práctica Archivos y Funciones 1
+Crea una función llamada abrir_leer() 
+que abra (open) un archivo indicado como
+parámetro, y devuelva su contenido (read).
+'''
+
+def abrir_leer(archivo):
+    fichero = open(archivo)
+    return fichero.readline()
+
+#Ejercicio de codificación 118 Practica Archivos y Funciones 2
+'''
+Práctica Archivos y Funciones 2
+Crea una función llamada sobrescribir() que abra (open) un archivo
+indicado como parámetro, y sobrescriba cualquier contenido anterior 
+por el texto "contenido eliminado"
+'''
+
+def sobrescribir(fichero):
+    archivo = open(fichero,'w')
+    return archivo.write('contenido eliminado')
+
+#Ejercicio de codificación 118 Practica Archivos y Funciones 3
+'''
+Crea una función llamada registro_error() que abra (open) un archivo 
+indicado como parámetro, y lo actualice añadiendo una línea al final 
+que indique "se ha registrado un error de ejecución". Finalmente, debe 
+cerrar el archivo abierto.
+'''
+
+def registro_error(fichero):
+    archivo = open(fichero, 'a')
+    archivo.writelines("se ha registrado un error de ejecución")
+    return archivo.close()
+
+#Aqui empieza el proyecto de la sección 6. Un directorio de recetas
 
